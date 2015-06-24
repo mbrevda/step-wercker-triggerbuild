@@ -40,7 +40,8 @@ RET=$( curl -qSsw '\n%{http_code}' \
 	https://app.wercker.com/api/v3/builds) 2>/dev/null
 STATUS=$(echo "$RET" | tail -n1 )
 RET=$(echo "$RET" | head -n-1)
-
+ls
+pwd
 if [[ $STATUS -ne "200" ]]
 then
 	MSG=$(echo $RET | $WERCKER_SOURCE_DIR/JSON.sh |  awk '$1 ~ /message/ {$1=""; print $0}')

@@ -1,6 +1,0 @@
-build:
-	# The steps that will be executed on build
-	steps:
-		- script:
-			name: noop
-			code: echo ''

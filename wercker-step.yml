@@ -1,5 +1,5 @@
 name: wercker-triggerbuild
-version: 0.0.8
+version: 0.0.9
 description: Trigger a build on a Wercker application
 keywords:
   - wercker

@@ -40,14 +40,14 @@ RET=$( curl -qSsw '\n%{http_code}' \
 	https://app.wercker.com/api/v3/builds) 2>/dev/null
 STATUS=$(echo "$RET" | tail -n1 )
 RET=$(echo "$RET" | head -n-1)
-ls
-pwd
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 if [[ $STATUS -ne "200" ]]
 then
-	MSG=$(echo $RET | $WERCKER_SOURCE_DIR/JSON.sh |  awk '$1 ~ /message/ {$1=""; print $0}')
+	MSG=$(echo $RET | $DIR/JSON.sh |  awk '$1 ~ /message/ {$1=""; print $0}')
     fail "Wercker trigger build failed: $MSG"
 else
-	URL=$(echo $RET | $WERCKER_SOURCE_DIR/JSON.sh |  awk '$1 ~ /URL/ {$1=""; print $0}')
+	URL=$(echo $RET | $DIR/JSON.sh |  awk '$1 ~ /URL/ {$1=""; print $0}')
     success "Wercker trigger build has been requested succesfully"
 	success "View the status of the buld at: $URL"
 fi

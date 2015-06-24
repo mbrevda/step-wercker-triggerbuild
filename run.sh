@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/bash -x
 #. ./build-esen.sh
 
-# eset deug mode
+# set deug mode
 if [ -n "$WERCKER_WERCKER_TRIGGERBUILD_DEBUG" ]
 then
     set -x
@@ -41,7 +41,7 @@ fi
 info "Requesting build"
 RET=$( curl -qSsw '\n%{http_code}' \
 	-H 'Content-Type: application/json' \
-	-H  \'Authorization: Bearer $WERCKER_WERCKER_TRIGGERBUILD_TOKEN\' \
+	-H  "Authorization: Bearer $WERCKER_WERCKER_TRIGGERBUILD_TOKEN" \
 	-X POST -d {"$JSON"} \
 	--silent \
 	https://app.wercker.com/api/v3/builds) 2>/dev/null

@@ -1,6 +1,12 @@
 #!/bin/bash
 #. ./build-esen.sh
 
+# eset deug mode
+if [ -n "$WERCKER_DEBUG" ]
+then
+    set -x
+fi
+
 # ensure we have a token
 if [ -z "$WERCKER_TOKEN" ]
 then

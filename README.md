@@ -7,7 +7,7 @@ Triggers a wercker build
 * `token` REQUIRED your Wercker bearer token (see http://devcenter.wercker.com/api/getting-started/authentication.html)
 * `applicaiton_id` REQUIRED The id of application you wish to build
 * `branch` OPTIONAL The Git branch that the build should use. If not specified, the default branch will be used.
-* `commit_hash` Rhe Git commit hash that the build should used. Requires `branch` to be set. If not specified, the latest commit is fetched
+* `commit_hash` OPTIONAL The Git commit hash that the build should used. Requires `branch` to be set. If not specified, the latest commit is fetched
 * `message` OPTIONAL The message to use for the build. If not specified, the Git commit message is used.
 
 # Example
